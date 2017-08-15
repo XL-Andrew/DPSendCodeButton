@@ -15,6 +15,7 @@
 		49B48A031F42E5C40032859A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B48A011F42E5C40032859A /* LaunchScreen.storyboard */; };
 		49B48A0D1F42E5EA0032859A /* DPSendCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B48A0C1F42E5EA0032859A /* DPSendCodeButton.m */; };
 		49B48A101F42E62F0032859A /* DPGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B48A0F1F42E62F0032859A /* DPGCDTimer.m */; };
+		49B48A271F434AE30032859A /* PSPDFUIKitMainThreadGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B48A261F434AE30032859A /* PSPDFUIKitMainThreadGuard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		49B48A0C1F42E5EA0032859A /* DPSendCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSendCodeButton.m; sourceTree = "<group>"; };
 		49B48A0E1F42E62F0032859A /* DPGCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGCDTimer.h; sourceTree = "<group>"; };
 		49B48A0F1F42E62F0032859A /* DPGCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGCDTimer.m; sourceTree = "<group>"; };
+		49B48A261F434AE30032859A /* PSPDFUIKitMainThreadGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFUIKitMainThreadGuard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				49B48A0C1F42E5EA0032859A /* DPSendCodeButton.m */,
 				49B48A0E1F42E62F0032859A /* DPGCDTimer.h */,
 				49B48A0F1F42E62F0032859A /* DPGCDTimer.m */,
+				49B48A261F434AE30032859A /* PSPDFUIKitMainThreadGuard.m */,
 			);
 			path = DPSendCodeButton;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				49B48A101F42E62F0032859A /* DPGCDTimer.m in Sources */,
 				49B48A0D1F42E5EA0032859A /* DPSendCodeButton.m in Sources */,
 				49B489F51F42E5C40032859A /* main.m in Sources */,
+				49B48A271F434AE30032859A /* PSPDFUIKitMainThreadGuard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
