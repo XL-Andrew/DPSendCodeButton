@@ -7,10 +7,11 @@
 //
 
 #import "DPGCDTimer.h"
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
 @interface DPGCDTimer ()
 {
-    dispatch_source_t timer;
+    dispatch_source_t __block timer;
 }
 
 @property (nonatomic,copy)TimerRunBlock timerRunBlock;
@@ -22,6 +23,7 @@
 - (void)timerWithTimeDuration:(double)timeDuration withRunBlock:(TimerRunBlock)timerRunBlock
 {
     if (!timer) {
+        WS(weakSelf);
         //创建定时器
         _isTimerRuning = YES;
         NSUInteger __block time = timeDuration;
@@ -31,11 +33,11 @@
         timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
         dispatch_source_set_timer(timer,dispatch_walltime(NULL, 0),1 * NSEC_PER_SEC, 0); //每秒执行
         dispatch_source_set_event_handler(timer, ^{
-            if (self.timerRunBlock) {
-                if (time <= 0) {
-                    [self stopTimer];
-                } else {
-                    self.timerRunBlock(time --);
+            if (time <= 0) {
+                [self stopTimer];
+            } else {
+                if (weakSelf.timerRunBlock) {
+                    weakSelf.timerRunBlock(time --);
                 }
             }
         });
@@ -82,5 +84,6 @@
         }
     }
 }
+
 
 @end

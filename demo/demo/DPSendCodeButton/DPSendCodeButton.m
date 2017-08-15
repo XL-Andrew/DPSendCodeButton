@@ -55,10 +55,11 @@
 - (void)startTiming
 {
     WS(weakSelf);
+    self.enabled = NO;
     [self.countdownTimer timerWithTimeDuration:originalTime withRunBlock:^(NSUInteger currentTime) {
-        weakSelf.enabled = NO;
+        NSLog(@"%ld",currentTime);
         [self saveTime:currentTime];
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf setTitle:[NSString stringWithFormat:@"重新发送（%lds）",currentTime] forState:UIControlStateNormal];
         });
     }];
@@ -70,7 +71,7 @@
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:UIApplicationDidBecomeActiveNotification
                                                       object:nil];
-    
+        
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:UIApplicationDidEnterBackgroundNotification
                                                       object:nil];
@@ -84,9 +85,9 @@
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"VerCodeButtonTime"] integerValue];
 }
 
-- (void)saveTime:(NSUInteger)time
+- (void)saveTime:(NSUInteger)ktime
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",time] forKey:@"VerCodeButtonTime"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",ktime] forKey:@"VerCodeButtonTime"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -106,9 +107,9 @@
         WS(weakSelf);
         _countdownTimer = [[DPGCDTimer alloc] init];
         _countdownTimer.timerStopBlock = ^{
-            weakSelf.enabled = YES;
             originalTime = COUNTDOWN_TIME;
-            dispatch_sync(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.enabled = YES;
                 [weakSelf setTitle:@"重新发送" forState:UIControlStateNormal];
             });
         };
