@@ -19,7 +19,7 @@
 /**
  后台时是否允许计时
  
- @param allow defualt is YES
+ @param allow defualt is NO
  */
 - (void)allowTimingAtBackgound:(BOOL)allow;
 

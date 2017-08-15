@@ -30,6 +30,18 @@
         [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [self setTitle:@"获取验证码" forState:UIControlStateNormal];
         [self addTarget:self action:@selector(startTiming) forControlEvents:UIControlEventTouchUpInside];
+        
+        //App进入前台
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(ApplicationBecomeActive)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
+        //App进入后台
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(ApplicationEnterBackground)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+        
         if ([self getSaveTime] > 1) {
             originalTime = [self getSaveTime];
             [self startTiming];
@@ -54,17 +66,14 @@
 
 - (void)allowTimingAtBackgound:(BOOL)allow
 {
-    if (!allow) {
-        //App进入前台
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(ApplicationBecomeActive)
-                                                     name:UIApplicationDidBecomeActiveNotification
-                                                   object:nil];
-        //App进入后台
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(ApplicationEnterBackground)
-                                                     name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];
+    if (allow) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIApplicationDidBecomeActiveNotification
+                                                      object:nil];
+    
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIApplicationDidEnterBackgroundNotification
+                                                      object:nil];
     }
 }
 
@@ -95,7 +104,7 @@
 {
     if (!_countdownTimer) {
         WS(weakSelf);
-        _countdownTimer = [[GCDTimer alloc] init];
+        _countdownTimer = [[DPGCDTimer alloc] init];
         _countdownTimer.timerStopBlock = ^{
             weakSelf.enabled = YES;
             originalTime = COUNTDOWN_TIME;
