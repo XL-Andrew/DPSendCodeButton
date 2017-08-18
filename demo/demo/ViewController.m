@@ -20,7 +20,7 @@
     
     DPSendCodeButton *sendCodeButton = [[DPSendCodeButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
     sendCodeButton.backgroundColor = [UIColor redColor];
-    [sendCodeButton addTarget:sendCodeButton action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    [sendCodeButton addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sendCodeButton];
 }
 
