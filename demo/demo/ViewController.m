@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "DPSendCodeButton.h"
+#import "DemoViewController.h"
 
 @interface ViewController ()
 
@@ -18,18 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    DPSendCodeButton *sendCodeButton = [[DPSendCodeButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
-    sendCodeButton.backgroundColor = [UIColor redColor];
-    [sendCodeButton addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:sendCodeButton];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(100, 100, 100, 100);
+    button.backgroundColor = [UIColor greenColor];
+    [button setTitle:@"跳转" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
 
-- (void)click
+- (void)click:(UIButton *)sender
 {
-    //当开始计时 && 计时没有结束时，按钮点击无效。不用担心计时中多次点击。
-    NSLog(@"发送请求验证码的网络请求");
+    [self.navigationController pushViewController:[[DemoViewController alloc]init] animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

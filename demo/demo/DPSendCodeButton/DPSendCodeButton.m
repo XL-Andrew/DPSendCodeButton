@@ -19,11 +19,13 @@
 
 @property (nonatomic, strong) DPGCDTimer *countdownTimer;
 
+@property (nonatomic, copy) NSString *identifyString;
+
 @end
 
 @implementation DPSendCodeButton
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame identify:(NSString *)identifyString
 {
     if (self = [super initWithFrame:frame]) {
         self.enabled = YES;
@@ -41,6 +43,8 @@
                                                  selector:@selector(ApplicationEnterBackground)
                                                      name:UIApplicationDidEnterBackgroundNotification
                                                    object:nil];
+        
+        _identifyString = identifyString;
         
         if ([self getSaveTime] > 1) {
             originalTime = [self getSaveTime];
@@ -82,13 +86,21 @@
 
 - (NSUInteger)getSaveTime
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"VerCodeButtonTime"] integerValue];
+    if (!_identifyString || _identifyString == nil) {
+        return [[[NSUserDefaults standardUserDefaults] objectForKey:@"VerCodeButtonTime"] integerValue];
+    }
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"VerCodeButtonTime-%@",_identifyString]] integerValue];
 }
 
 - (void)saveTime:(NSUInteger)ktime
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",ktime] forKey:@"VerCodeButtonTime"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (!_identifyString || _identifyString == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",ktime] forKey:@"VerCodeButtonTime"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",ktime] forKey:[NSString stringWithFormat:@"VerCodeButtonTime-%@",_identifyString]];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)ApplicationBecomeActive

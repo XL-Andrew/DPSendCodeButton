@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49A35CE61F46F1A80050A3FD /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A35CE51F46F1A80050A3FD /* DemoViewController.m */; };
 		49B489F51F42E5C40032859A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B489F41F42E5C40032859A /* main.m */; };
 		49B489F81F42E5C40032859A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B489F71F42E5C40032859A /* AppDelegate.m */; };
 		49B489FB1F42E5C40032859A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B489FA1F42E5C40032859A /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49A35CE41F46F1A80050A3FD /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		49A35CE51F46F1A80050A3FD /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		49B489F01F42E5C40032859A /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B489F41F42E5C40032859A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		49B489F61F42E5C40032859A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 				49B489F71F42E5C40032859A /* AppDelegate.m */,
 				49B489F91F42E5C40032859A /* ViewController.h */,
 				49B489FA1F42E5C40032859A /* ViewController.m */,
+				49A35CE41F46F1A80050A3FD /* DemoViewController.h */,
+				49A35CE51F46F1A80050A3FD /* DemoViewController.m */,
 				49B489FC1F42E5C40032859A /* Main.storyboard */,
 				49B489FF1F42E5C40032859A /* Assets.xcassets */,
 				49B48A011F42E5C40032859A /* LaunchScreen.storyboard */,
@@ -176,6 +181,7 @@
 				49B48A101F42E62F0032859A /* DPGCDTimer.m in Sources */,
 				49B48A0D1F42E5EA0032859A /* DPSendCodeButton.m in Sources */,
 				49B489F51F42E5C40032859A /* main.m in Sources */,
+				49A35CE61F46F1A80050A3FD /* DemoViewController.m in Sources */,
 				49B48A271F434AE30032859A /* PSPDFUIKitMainThreadGuard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +339,7 @@
 				49B48A091F42E5C40032859A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
