@@ -20,7 +20,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    DPSendCodeButton *sendCodeButton = [[DPSendCodeButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100) identify:@"first"];
+    DPSendCodeButton *sendCodeButton = [[DPSendCodeButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100) identify:@"LoginViewButton"];
     sendCodeButton.backgroundColor = [UIColor redColor];
     [sendCodeButton addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sendCodeButton];
